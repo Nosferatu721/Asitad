@@ -22,7 +22,7 @@ class UserController
       $u->setCorreo($correo);
       $userFind = $u->findId();
       if ($userFind) {
-        if ($userFind->contrasena == $contraseña) {
+        if ($userFind->PASSWORD == $contraseña) {
           $_SESSION['userLog'] = $userFind;
           header('Location: ' . baseUrl . 'user/index');
         } else {

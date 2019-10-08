@@ -77,7 +77,7 @@ class User
 
   public function findId()
   {
-    $sql = "SELECT * FROM usuario WHERE correoElectronico='{$this->getCorreo()}'";
+    $sql = "SELECT * FROM usuarios INNER JOIN rol ON usuarios.rol = rol.id WHERE email='{$this->getCorreo()}'";
     $user = $this->db->query($sql);
     return $user->fetch_object();
   }

@@ -37,6 +37,7 @@
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Iniciar sesión
         </button>
+        
         <form action="<?= baseUrl ?>user/logear" method="POST" class="dropdown-menu p-3 dropdown-menu-right">
           <div class="form-group">
             <label for="correo">Correo Electrónico</label>
