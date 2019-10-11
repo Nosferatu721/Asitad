@@ -2,11 +2,11 @@
 
  # Activar Rewrite
  RewriteEngine on
- ErrorDocument 404 http://localhost/Evaluacion/error/index
+ ErrorDocument 404 http://localhost/Asitad/error/index
 
  RewriteCond %{SCRIPT_FILENAME} !-d
  RewriteCond %{SCRIPT_FILENAME} !-f
 
- RewriteRule ^(.*)/(.*) index.php?controller=$1&action=$2
+ RewriteRule ^(.*)/(.*) index.php?controlador=$1&accion=$2
 
 </IfModule>

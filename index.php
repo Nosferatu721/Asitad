@@ -14,10 +14,10 @@ function showError()
 }
 
 // Comprobamos si existe algun Controlador
-if (isset($_GET['controller'])) {
+if (isset($_GET['controlador'])) {
   // Guardamos el Controlador en una Variable
-  $nombreController = $_GET['controller'] . 'Controller';
-} elseif (!isset($_GET['controller']) && !isset($_GET['action'])) {
+  $nombreController = $_GET['controlador'] . 'Controller';
+} elseif (!isset($_GET['controlador']) && !isset($_GET['accion'])) {
   // Si no existe un controlador asignamos uno por Defecto
   $nombreController = controllerDefault;
 } else {
@@ -29,14 +29,14 @@ if (isset($_GET['controller'])) {
 if (class_exists($nombreController)) {
   // Instanciamos el controlador
   $controller = new $nombreController();
-  // Ahora comprobamos si existe un ( action ) y si el action existe en el controlador
-  if (isset($_GET['action']) && method_exists($controller, $_GET['action'])) {
-    // Guardamos el action
-    $action = $_GET['action'];
+  // Ahora comprobamos si existe un ( accion ) y si el accion existe en el controlador
+  if (isset($_GET['accion']) && method_exists($controller, $_GET['accion'])) {
+    // Guardamos el accion
+    $accion = $_GET['accion'];
     // Ejecutar peticion
-    Utils::verify();
-    $controller->$action();
-  } elseif (!isset($_GET['controller']) && !isset($_GET['action'])) {
+    // Utils::verify();
+    $controller->$accion();
+  } elseif (!isset($_GET['controlador']) && !isset($_GET['accion'])) {
     $actionDefault = actionDefault;
     $controller->$actionDefault();
   } else {

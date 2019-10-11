@@ -8,7 +8,6 @@ class User
   private $apellido;
   private $correo;
   private $contraseña;
-  private $instituto;
 
   public function __construct()
   {
@@ -64,21 +63,22 @@ class User
   {
     $this->contraseña = $this->db->real_escape_string($contraseña);
   }
-  //
-  function getInstituto()
-  {
-    return $this->instituto;
-  }
-
-  function setInstituto($instituto)
-  {
-    $this->instituto = $this->db->real_escape_string($instituto);
-  }
 
   public function findId()
   {
     $sql = "SELECT * FROM usuarios INNER JOIN rol ON usuarios.rol = rol.id WHERE email='{$this->getCorreo()}'";
     $user = $this->db->query($sql);
     return $user->fetch_object();
+  }
+
+  public function save()
+  {
+    $sql = "INSERT INTO usuarios VALUES (NULL, '{$this->getNombre()}', '{$this->getApellido()}', '{$this->getCorreo()}', '{$this->getContraseña()}', 1, NULL)";
+    $saved = $this->db->query($sql);
+    $result = false;
+    if ($saved) {
+      $result = true;
+    }
+    return $result;
   }
 }
